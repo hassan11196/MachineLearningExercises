@@ -39,6 +39,8 @@ X = data(:, 1:2);
 y = data(:, 3);
 m = length(y);
 
+% X = [ones(m, 1), data(:,:)]; % Add a column of ones to x
+
 % Print out some data points
 fprintf('First 10 examples from the dataset: \n');
 fprintf(' x = [%.0f %.0f], y = %.0f \n', [X(1:10,:) y(1:10,:)]');
@@ -78,6 +80,17 @@ X = [ones(m, 1) X];
 %
 % Hint: At prediction, make sure you do the same feature normalization.
 %
+theta = zeros(3, 1);
+
+fprintf('\nTesting the cost function ...\n')
+% compute and display initial cost
+J = computeCost(X, y, theta);
+fprintf('With theta = [0 ; 0]\nCost computed = %f\n', J);
+fprintf('Expected cost value (approx) 32.07\n');
+
+
+fprintf('Program paused. Press enter to continue.\n');
+pause;
 
 fprintf('Running gradient descent ...\n');
 
@@ -86,7 +99,7 @@ alpha = 0.01;
 num_iters = 400;
 
 % Init Theta and Run Gradient Descent 
-theta = zeros(3, 1);
+
 [theta, J_history] = gradientDescentMulti(X, y, theta, alpha, num_iters);
 
 % Plot the convergence graph
@@ -104,7 +117,10 @@ fprintf('\n');
 % ====================== YOUR CODE HERE ======================
 % Recall that the first column of X is all-ones. Thus, it does
 % not need to be normalized.
-price = 0; % You should change this
+X2 = [1 1650 3]
+X2(:,2:3) = (X2(:,2:3) - mu ) / sigma
+
+price = ( X2 * theta); % You should change this % You should change this
 
 
 % ============================================================
@@ -149,7 +165,9 @@ fprintf('\n');
 
 % Estimate the price of a 1650 sq-ft, 3 br house
 % ====================== YOUR CODE HERE ======================
-price = 0; % You should change this
+X2 = [1 1650 3]
+% X2(:,2:3) = (X2(:,2:3) - mu ) / sigma
+price = (X2 * theta); % You should change this
 
 
 % ============================================================
