@@ -29,6 +29,6 @@ plot(X(neg, 1), X(neg, 2), 'ko', 'MarkerFaceColor', 'y', 'MarkerSize', 7);
 
 
 
-hold off
+hold off;
 
 end
