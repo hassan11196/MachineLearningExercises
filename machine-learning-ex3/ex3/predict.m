@@ -10,6 +10,8 @@ num_labels = size(Theta2, 1);
 % You need to return the following variables correctly 
 p = zeros(size(X, 1), 1);
 
+displayData(X(:,:))
+
 % Add ones to the X data matrix
 X = [ones(m, 1) X];
 
@@ -23,19 +25,20 @@ X = [ones(m, 1) X];
 %       information see 'help max'. If your examples are in rows, then, you
 %       can use max(A, [], 2) to obtain the max for each row.
 %
+size(X)
 size(Theta1)
 size(Theta2)
-size(X)
+
 
 a2 = sigmoid(X * Theta1');
 % Add ones to the a2 data matrix
+size(a2)
 a2 = [ones(size(a2, 1), 1) a2];
-a3 = max(sigmoid(a2 * Theta2'));
+a3 = sigmoid(Theta2 * a2');
 
-
-p = a3;
-
-
+disp(a3(:,1))
+[max_v indexes] = max(a3)
+p = indexes;
 
 
 % =========================================================================

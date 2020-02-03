@@ -36,10 +36,13 @@ disp(num_labels)
 size(X)
 size(p)
 
-p = round((X*all_theta')(num_labels));
 
 
+a3 = (X*all_theta');
 
+
+[max_v indexes] = max(a3, [], 2)
+p = indexes;
 
 % =========================================================================
 
