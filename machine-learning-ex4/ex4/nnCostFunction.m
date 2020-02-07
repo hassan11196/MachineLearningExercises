@@ -61,7 +61,8 @@ Theta2_grad = zeros(size(Theta2));
 %               the regularization separately and then add them to Theta1_grad
 %               and Theta2_grad from Part 2.
 %
-
+disp('hidden_layer_size')
+disp(hidden_layer_size)
 disp('size X')
 size(X)
 disp('Size y')
@@ -93,6 +94,7 @@ for j = 1:size(Theta2, 1)
         sum_theta += Theta2(j,k).^2;
     end
 end
+a1 = X;
 z2 = [ones(size(X, 1),1) X] * Theta1';
 a2 = sigmoid(z2);
 a2 = [ones(size(a2, 1),1) a2];
@@ -107,17 +109,25 @@ J  = (-1/m) * sum(sum( y .* log(a3) + (1 - y).*log(1-a3))) + ((lambda/(2*m)) *su
 
 Tri1 = zeros(size(Theta1, 1), size(Theta1, 2)-1);
 Tri2 = zeros(size(Theta2, 1), size(Theta2, 2));
+Theta1_grad = zeros(size(Theta1, 1), size(Theta1, 2)-1);
+Theta12_grad = zeros(size(Theta2, 1), size(Theta2, 2));
+for i=1:400;
+disp(i);
 
-for i=1:m;
+a1 = X;
+z2 = [ones(size(X, 1),1) X] * Theta1';
+a2 = sigmoid(z2);
+a2 = [ones(size(a2, 1),1) a2];
+a3 = sigmoid(a2 * Theta2');
 
 delta3 = a3 - y;
-delta2 = (delta3*Theta2) .* sigmoidGradient([ones(size(z2, 1),1) z2])
+delta2 = (delta3*Theta2) .* sigmoidGradient([ones(size(z2, 1),1) z2]);
 delta2 = delta2(:,2:end);
 
 Tri1 = Tri1  + (X' * delta2)';
 Tri2 = Tri2 + (a2'* delta3)';
-Theta1_grad = (1/m).*Tri1;
-Theta2_grad = (1/m).*Tri2;
+Theta1_grad = ((1/m).*Tri1) ;
+Theta2_grad = ((1/m).*Tri2) + ((lambda/m) * Theta2);
 
 end
 
@@ -126,7 +136,9 @@ end
 % =========================================================================
 
 % Unroll gradients
+Theta1_grad = [ones(size(Theta1_grad, 1),1) Theta1_grad];
+% Theta2_grad = [ones(size(Theta2_grad, 1),1) Theta2_grad];
 grad = [Theta1_grad(:) ; Theta2_grad(:)];
-
+size(grad)
 
 end
