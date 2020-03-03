@@ -139,8 +139,34 @@ pause;
 load('ex6data3.mat');
 
 % Try different SVM Parameters here
-[C, sigma] = dataset3Params(X, y, Xval, yval);
+% steps = [0.01, 0.03, 0.1, 0.3, 1, 3, 10, 30]
+% min_error = 10000
+% bestC = 0
+% bestSigma = 0
+% for i = 1:8
+%     for j = 1:8
+%         disp('iteration')
+%         disp((i*8) + j)
+        
+%         model= svmTrain(X, y, steps(i), @(x1, x2) gaussianKernel(x1, x2, steps(j)));
+%         visualizeBoundary(X, y, model);
+%         predictions = svmPredict(model, Xval);
+%         error_pred = mean(double(predictions ~= yval));
+%         if error_pred < min_error
+%             min_error = error_pred;
+%             bestC = steps(i);
+%             bestSigma = steps(j);
+%         end
 
+%     end
+% end
+
+% disp('Best C and Sigma')
+% disp(bestC)
+% disp(bestSigma)
+% disp(min_error)
+
+[C, sigma] = dataset3Params(X, y, Xval, yval, model);
 % Train the SVM
 model= svmTrain(X, y, C, @(x1, x2) gaussianKernel(x1, x2, sigma));
 visualizeBoundary(X, y, model);
