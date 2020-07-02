@@ -10,7 +10,7 @@
   - [Logistic Regression Cost Function](https://github.com/hassan11196/MachineLearningExercises/blob/master/machine-learning-ex2/ex2/costFunction.m)
   - [Logistic Regression Regularized Cost Function](https://github.com/hassan11196/MachineLearningExercises/blob/master/machine-learning-ex2/ex2/costFunctionReg.m)
   
-- [Exercise 3 - Multi-class Classication and Neural Networks](https://github.com/hassan11196/MachineLearningExercises/tree/master/machine-learning-ex3)
+- [Exercise 3 - Multi-class Classification and Neural Networks](https://github.com/hassan11196/MachineLearningExercises/tree/master/machine-learning-ex3)
   - [Multi-class Classification](https://github.com/hassan11196/MachineLearningExercises/blob/master/machine-learning-ex3/ex3/ex3.m)
   - [Vectorizing Logistic Regression](https://github.com/hassan11196/MachineLearningExercises/blob/master/machine-learning-ex3/ex3/lrCostFunction.m)
   - [One-vs-all Classification](https://github.com/hassan11196/MachineLearningExercises/blob/master/machine-learning-ex3/ex3/oneVsAll.m)
